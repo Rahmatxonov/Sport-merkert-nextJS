@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
+  const [expandedProduct, setExpandedProduct] = useState(null);
 
   useEffect(() => {
     axios("https://fakestoreapi.com/products")
@@ -53,6 +54,10 @@ const Product = () => {
     }
   };
 
+  const toggleReadMore = (productId) => {
+    setExpandedProduct((prev) => (prev === productId ? null : productId));
+  };
+
   return (
     <div className="container mx-auto p-4 bg-[#F2F2F2]">
       <div className="mt-[40px] flex items-center justify-between mb-4">
@@ -92,7 +97,7 @@ const Product = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="relative border p-4 rounded-lg shadow-lg"
+            className="relative border p-4 rounded-lg shadow-lg w-[350px] h-auto"
           >
             {renderLabel(product.label)}
             <img
@@ -106,12 +111,34 @@ const Product = () => {
                 {product.oldPrice} UZS
               </p>
             )}
-            <p className="text-gray-800 font-bold mb-2 text-red-500">
+            <p
+              className={`text-gray-800 font-bold mb-2 ${
+                product.label === "Акция" ? "text-red-500" : ""
+              }`}
+            >
               {product.price} UZS
             </p>
-            <p className="text-sm text-gray-600">{product.description}</p>
-            <button className="mt-4 bg-yellow-400 text-white p-2 rounded w-full">
-              Корзина
+            <p className="text-sm text-gray-600">
+              {expandedProduct === product.id
+                ? product.description
+                : `${product.description.slice(0, 100)}...`}
+            </p>
+            <button
+              className="text-blue-500 text-sm"
+              onClick={() => toggleReadMore(product.id)}
+            >
+              {expandedProduct === product.id ? "Read Less" : "Read More"}
+            </button>
+            <button className="flex items-center justify-center space-x-2 mt-4 bg-yellow-400 text-black p-2 rounded w-full">
+              <Image
+                src="/korzina.svg"
+                style={{ width: "20px", height: "20px" }}
+                width={0}
+                height={0}
+                alt="board"
+                className="object-cover"
+              />
+              <p> Корзина</p>
             </button>
           </div>
         ))}
