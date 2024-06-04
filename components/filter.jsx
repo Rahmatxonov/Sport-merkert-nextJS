@@ -33,7 +33,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="bg-[#F2F2F2]">
+    <div className="bg-[#F2F2F2] rounded-md">
       <div className="container flex items-center space-x-2">
         <span className="flex items-center space-x-2 mt-[40px]">
           <Image
@@ -68,12 +68,17 @@ const Filter = () => {
         <Box>
           <span>Цена</span>
           <Slider
+            className="slider"
             value={priceRange}
             onChange={handlePriceChange}
             valueLabelDisplay="auto"
             min={3000}
             max={40000}
-            sx={{ marginTop: 2, marginBottom: 2 }}
+            sx={{
+              marginTop: 2,
+              marginBottom: 2,
+              color: "#FBD029",
+            }}
           />
         </Box>
         <TextField
@@ -81,7 +86,9 @@ const Filter = () => {
           value={article}
           onChange={(e) => setArticle(e.target.value)}
           fullWidth
-          sx={{ marginBottom: 2 }}
+          sx={{
+            marginBottom: 2,
+          }}
         />
         <Select
           value={category}

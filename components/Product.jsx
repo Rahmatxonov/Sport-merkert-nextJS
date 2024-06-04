@@ -32,19 +32,19 @@ const Product = () => {
     switch (label) {
       case "Акция":
         return (
-          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-6 left-1 bg-red-500 text-white text-xs font-bold px-8 py-5 rounded position">
             Акция
           </span>
         );
       case "Новый":
         return (
-          <span className="absolute top-2 left-2 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-6 left-1 bg-purple-500 text-white text-xs font-bold px-8 py-5 rounded position">
             Новый
           </span>
         );
       case "ТОП":
         return (
-          <span className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-6 left-2 bg-green-500 text-white text-xs font-bold px-8 py-5 rounded position">
             ТОП
           </span>
         );
@@ -56,7 +56,7 @@ const Product = () => {
   return (
     <div className="container mx-auto p-4 bg-[#F2F2F2]">
       <div className="mt-[40px] flex items-center justify-between mb-4">
-        <span>
+        <span className="space-x-5">
           <select className="px-5 py-3 rounded-md">
             <option>Сортировать</option>
           </select>
@@ -73,6 +73,7 @@ const Product = () => {
               width={0}
               height={0}
               alt="board"
+              className="object-cover"
             />
           </button>
           <button className="flex items-center space-x-2">
@@ -105,7 +106,9 @@ const Product = () => {
                 {product.oldPrice} UZS
               </p>
             )}
-            <p className="text-gray-800 font-bold mb-2">{product.price} UZS</p>
+            <p className="text-gray-800 font-bold mb-2 text-red-500">
+              {product.price} UZS
+            </p>
             <p className="text-sm text-gray-600">{product.description}</p>
             <button className="mt-4 bg-yellow-400 text-white p-2 rounded w-full">
               Корзина
