@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const CardList = () => {
@@ -22,7 +23,6 @@ const CardList = () => {
   };
 
   const renderLabel = (label) => {
-    // Implement your label rendering logic here
     return label ? <div>{label}</div> : null;
   };
 
@@ -31,7 +31,7 @@ const CardList = () => {
       <h2 className="pt-[111px] font-semibold text-[32px]">
         Реконмендуемые продукты
       </h2>
-      <div className="flex items-center justify-center space-x-5 mt-10 mb-[200px]">
+      <div className="flex items-center justify-center space-x-5 mt-10 pb-[200px]">
         {products.slice(0, 4).map((product) => (
           <div
             key={product.id}
@@ -67,14 +67,16 @@ const CardList = () => {
             >
               {expandedProduct === product.id ? "Read Less" : "Read More"}
             </button>
-            <button className="flex items-center justify-center space-x-2 mt-4 bg-yellow-400 text-black p-2 rounded w-full">
-              <img
-                src="/korzina.svg"
-                alt="board"
-                className="w-5 h-5 object-cover"
-              />
-              <p> Корзина</p>
-            </button>
+            <Link href={"/single"}>
+              <button className="flex items-center justify-center space-x-2 mt-4 bg-yellow-400 text-black p-2 rounded w-full">
+                <img
+                  src="/korzina.svg"
+                  alt="board"
+                  className="w-5 h-5 object-cover"
+                />
+                <p> Корзина</p>
+              </button>
+            </Link>
           </div>
         ))}
       </div>

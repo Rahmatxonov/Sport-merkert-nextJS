@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Product = () => {
@@ -129,17 +130,19 @@ const Product = () => {
             >
               {expandedProduct === product.id ? "Read Less" : "Read More"}
             </button>
-            <button className="flex items-center justify-center space-x-2 mt-4 bg-yellow-400 text-black p-2 rounded w-full">
-              <Image
-                src="/korzina.svg"
-                style={{ width: "20px", height: "20px" }}
-                width={0}
-                height={0}
-                alt="board"
-                className="object-cover"
-              />
-              <p> Корзина</p>
-            </button>
+            <Link href={"/single"}>
+              <button className="flex items-center justify-center space-x-2 mt-4 bg-yellow-400 text-black p-2 rounded w-full">
+                <Image
+                  src="/korzina.svg"
+                  style={{ width: "20px", height: "20px" }}
+                  width={0}
+                  height={0}
+                  alt="board"
+                  className="object-cover"
+                />
+                <p> Корзина</p>
+              </button>
+            </Link>
           </div>
         ))}
       </div>
