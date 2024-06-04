@@ -16,15 +16,20 @@
 //   );
 // }
 
+import CardList from "@/components/CardList";
 import Product from "@/components/Product";
 import Filter from "@/components/filter";
-import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex justify-between">
-      <Filter />
-      <Product />
+    <div className="bg-[#F2F2F2]">
+      <div className="flex justify-between">
+        <Filter />
+        <Product />
+      </div>
+      <div>
+        <CardList />
+      </div>
     </div>
   );
 }

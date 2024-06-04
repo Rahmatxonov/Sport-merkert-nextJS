@@ -33,7 +33,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="bg-[#F2F2F2] rounded-md">
+    <div className="bg-[#F2F2F2] rounded-md filter">
       <div className="container flex items-center space-x-2">
         <span className="flex items-center space-x-2 mt-[40px]">
           <Image
